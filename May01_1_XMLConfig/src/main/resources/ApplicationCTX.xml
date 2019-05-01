@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="calculator" class="com.kyle.sts.Calculator"></bean>
+	<bean id="myCalculator" class="com.kyle.sts.MyCalculator">
+		<property name="calculator">
+			<ref bean="calculator"/>
+		</property>
+		<property name="firstNum" value="10"></property>
+		<property name="secondNum" value="2"></property>
+	</bean>
+	
+	<bean id="bmiCalculator" class="com.kyle.bmi.BMICalculator">
+		<property name="lowWeight">
+			<value>18.5</value>
+		</property>
+		<property name="normal">
+			<value>23</value>
+		</property>
+		<property name="overWeight">
+			<value>25</value>
+		</property>
+		<property name="obesity">
+			<value>30</value>
+		</property>
+	</bean>
+	<bean id="myinfo" class="com.kyle.bmi.MyInfo">
+		<property name="name">
+			<value>아무개</value>
+		</property>
+		<property name="height">
+			<value>171</value>
+		</property>
+		<property name="weight">
+			<value>80</value>
+		</property>
+		<property name="hobbys">
+			<list>
+				<value>수용</value>
+				<value>독서</value>
+				<value>하미</value>
+			</list>
+		</property>
+		<property name="bmiCalculator">
+			<ref bean="bmiCalculator"/>
+		</property>
+	</bean>
+	
+	<bean id="student1" class="com.kyle.student.Student">
+		<constructor-arg><value>홍길동</value></constructor-arg>
+		<constructor-arg><value>30</value></constructor-arg>
+		<constructor-arg><value>4학년</value></constructor-arg>
+		<constructor-arg><value>2반</value></constructor-arg>
+	</bean>
+	<bean id="studentInfo" class="com.kyle.student.StudentInfo">
+		<constructor-arg><ref bean="student1"/></constructor-arg>
+	</bean>
+	
+	<bean id="pencil" class="com.kyle.pencil.Pencil6B"></bean>
+</beans>
